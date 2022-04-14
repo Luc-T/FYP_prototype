@@ -58,8 +58,11 @@ class Ras:
         self.set_x2(newx2)
     
     def newValues(self):
-        print("New values not yet done . . .")
-        return
+        newx1 = random.uniform(-4.0, 4.0)
+        newx2 = random.uniform(-4.0, 4.0)
+        self.set_x1(newx1)
+        self.set_x2(newx2)
+        
 
     def mutate(self):
         num = random.random()

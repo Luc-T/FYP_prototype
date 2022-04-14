@@ -1,11 +1,14 @@
-from os import remove
 import random
 import matplotlib.pyplot as plt
 from matplotlib import cm, projections
 from matplotlib.ticker import LinearLocator
 from operator import attrgetter
 import numpy as np
-from rastigans import Ras
+from rastigans2 import Ras
+
+##########
+# for reproduction using parents
+##########
 
 POPSIZE = 10
 HALFPOP = (POPSIZE//2)-1
@@ -53,6 +56,7 @@ def removeScatters( popArray ):
         ax.scatter(i.x1, i.x2, i.fitness, color='red', alpha=1).remove()
 
 def addFittest( pa ):
+    #pa = list of pop in order of fitness
     newPA = []
     for i in range(HALFPOP, -1, -1):
         #adds fittest half to mating pool.
@@ -60,7 +64,6 @@ def addFittest( pa ):
         x2 = pa[i].get_x2()
         newMember = Ras(x1, x2)
         newPA.append(newMember)
-        #newPA.append(pa[i])
     return newPA
 
 def newMP( pa ):
@@ -77,6 +80,19 @@ def newPop( popArray):
     matingPool.extend(addFittest(popArray))
     calcFitness(matingPool)
 
+    #Currently:
+    #order pop by fitness
+    #take fittest 5, mutate
+    #take fittest 5 (again) and add to list of mutated version
+    #repeat
+
+    #I want:
+    #Order arry (fittest is first)
+    #Take fitness scores of all of pop 
+    #Normalise- scores = decimal values so total normal fitness equals 1 (call this probability?)
+    #problem is this, atm lowest fitness score = better. For improved 
+    #Need to inverse the probabilites. I.E if normalised fitness = 0.1 ... then prob = 0.9
+    
     for i in matingPool:
         print(i.x1, i.x2, i.fitness)
 
@@ -105,7 +121,7 @@ for i in popArray:
         print(i.x1, i.x2, i.fitness)
 
 
-for i in range (5):
+for i in range (10):
     print("population version: ", (i+1))
     popArray = newPop(popArray)
     

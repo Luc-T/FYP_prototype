@@ -47,6 +47,14 @@ testArray = sorted(testArray, key=attrgetter('fitness'))
 """ testArray[-1].calc()
 print(testArray[-1].fitness) """
 
+print("NOW SORTED!!!")
+x = 0
+for i in testArray:
+    x+=1
+    print("Position: ", x ,"fitness: ", i.fitness)
+
+
+
 REPLACE = (POPSIZE//2)-1
 testDat = Ras(-10, -10)
 #POPSIZE / 2 = 5
