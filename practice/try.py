@@ -15,6 +15,7 @@ POPSIZE = 10
 HALFPOP = (POPSIZE//2)-1
 
 fig, ax = plt.subplots(subplot_kw={"projection": "3d"}, figsize=(16, 9))
+ax.set_title('Original Population')
 
 # Make data.
 X = np.arange(-5, 5, 0.2)
@@ -130,8 +131,15 @@ for i in range (10):
     # A StrMethodFormatter is used automatically
     ax.zaxis.set_major_formatter('{x:.02f}')
 
+    # Add a color bar which maps values to colours.
+    fig.colorbar(surf, shrink=0.5, aspect=5)
+
     plt.show(block=False)
 
     move = input()
 
-    plt.close()
+    if i == 9:
+        break
+    else:
+        plt.close()
+
