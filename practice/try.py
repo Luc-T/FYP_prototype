@@ -14,7 +14,6 @@ from rastigans import Ras
 POPSIZE = 10
 HALFPOP = (POPSIZE//2)-1
 
-#plt.ion()
 fig, ax = plt.subplots(subplot_kw={"projection": "3d"}, figsize=(16, 9))
 
 # Make data.
@@ -110,12 +109,29 @@ for i in popArray:
 
 
 for i in range (10):
+    title = 'Population: '
+    title = (title + str(i))
+    fig, ax = plt.subplots(subplot_kw={"projection": "3d"}, figsize=(16, 9))
+    ax.set_title(title)
+
     print("population version: ", (i+1))
     popArray = newPop(popArray)
+
+    for i in popArray:
+        ax.scatter(i.x1, i.x2, i.fitness, color='red', alpha=1)
     
-    
+    # Plot the surface.
+    surf = ax.plot_surface(X, Y, Z, alpha=.2, cmap=cm.winter,
+                       linewidth=0, antialiased=False)
 
-removeScatters(popArray)
+    # Customize the z axis.
+    ax.set_zlim(-100, 100)
+    ax.zaxis.set_major_locator(LinearLocator(10))
+    # A StrMethodFormatter is used automatically
+    ax.zaxis.set_major_formatter('{x:.02f}')
 
+    plt.show(block=False)
 
-plt.draw()
+    move = input()
+
+    plt.close()

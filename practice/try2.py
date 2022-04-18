@@ -13,7 +13,6 @@ from rastigans2 import Ras
 POPSIZE = 10
 HALFPOP = (POPSIZE//2)-1
 
-#plt.ion()
 fig, ax = plt.subplots(subplot_kw={"projection": "3d"}, figsize=(16, 9))
 
 # Make data.
@@ -111,9 +110,9 @@ for i in range(POPSIZE):
 
 #draw on graph
 calcFitness(popArray)
-scArray = []
+
 for i in popArray:
-    scArray.append(ax.scatter(i.x1, i.x2, i.fitness, color='red', alpha=1))
+    ax.scatter(i.x1, i.x2, i.fitness, color='red', alpha=1)
     
 plt.show()
 print("original pop")
