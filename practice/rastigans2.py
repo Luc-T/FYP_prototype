@@ -25,14 +25,27 @@ class Ras:
         #print("setter method called")
         self.x2 = value
     
-    def set_y(self, y):
+    def get_fitness(self):
+        return self.fitness
+
+    def set_fitness(self, y):
         #print("set new fitness")
         self.fitness = y
-    #instance method 
+    
     def calc(self):
         y = 20 + (self.x1**2) + (self.x2**2) - 10*(np.cos((2*np.pi*self.x1)) + np.cos((2*np.pi*self.x2)))
-        self.set_y(y)
+        self.set_fitness(y)
 
+    def set_prob(self, p):
+        
+        #try/catch in case prob equals 0??
+        """ if (p == 0):
+            self.prob = 0.999999999999999
+        else: """
+        self.prob = p
+
+    def get_prob(self):
+        return self.prob
 
     def getStep(self):
         #find a direction (plus or minus)

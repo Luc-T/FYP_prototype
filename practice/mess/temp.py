@@ -1,3 +1,8 @@
-a_list = ["a", "b", "c"]
+fruits = ["Apple", "Banana", "Pear"]
+veg = ["Pepper", "Courgette", "Carrot"]
 
-print(len(a_list))
+j = 0
+for i in range(2, -1, -1):
+    print("i: ", fruits[i], "| j: ", veg[j])
+    j+=1
+

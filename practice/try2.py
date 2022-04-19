@@ -71,30 +71,54 @@ def newMP( pa ):
         i.mutate()
     return mp
 
+#pick a parent based on fitness
+def pickOne( pA ):
+    index = 0
+    r = random.random()
+    while (r > 0):
+        r = r - pA[index].get_prob()
+        index +=1
+
+    index -= 1
+    return pA[index]
+
 def newPop( popArray):
     #order pop, higher index = fitter
     popArray = orderPop(popArray)
+    sum = 0
+    for i in popArray:
+        sum += i.get_fitness()
+    #create normalised probability score
+    for i in popArray:
+        i.set_prob((i.get_fitness() / sum))
+
+    j = 0
+    for i in range((POPSIZE-1), HALFPOP, -1):
+        
+        temp = popArray[i].get_prob()
+        popArray[i].set_prob(popArray[j].get_prob())
+        popArray[j].set_prob(temp)
+        j+=1
+    
+    newMember = pickOne(popArray)
+    
+
     #matingPool = array of 5 fittest candidates *2
     matingPool = newMP(popArray)
     matingPool.extend(addFittest(popArray))
     calcFitness(matingPool)
 
-    #Currently:
-    #order pop by fitness
-    #take fittest 5, mutate
-    #take fittest 5 (again) and add to list of mutated version
-    #repeat
-
-    #I want:
-    #Order arry (fittest is first)
-    #Take fitness scores of all of pop 
-    #Normalise- scores = decimal values so total normal fitness equals 1 (call this probability?)
-    #problem is this, atm lowest fitness score = better. For improved 
-    #Need to inverse the probabilites. I.E if normalised fitness = 0.1 ... then prob = 0.9
+    #To Do:
+    #create function to use takeOne
+    #select two parents, make child, fill list of new Pop
+    #Also, fix the prob, not accurate I believe
     
-    for i in matingPool:
-        print(i.x1, i.x2, i.fitness)
+    total = 0
+    for i in popArray:
+        print(i.x1, i.x2, i.fitness, "Prob: ", i.get_prob())
+        total += i.get_prob()
 
+    print("Sum of prob = ", total)
     return matingPool
 
 
@@ -120,13 +144,7 @@ for i in popArray:
         print(i.x1, i.x2, i.fitness)
 
 
-for i in range (10):
+for i in range (1):
     print("population version: ", (i+1))
     popArray = newPop(popArray)
     
-    
-
-removeScatters(popArray)
-
-
-plt.draw()
