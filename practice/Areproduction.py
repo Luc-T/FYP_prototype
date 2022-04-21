@@ -5,21 +5,21 @@ from matplotlib import cm, projections
 from matplotlib.ticker import LinearLocator
 from operator import attrgetter
 import numpy as np
-from rastigans import Ras
+from rastrigins2 import Ras
 
 ##########
 # for aesexual reproduction
 ##########
 
-POPSIZE = 10
+POPSIZE = 50
 HALFPOP = (POPSIZE//2)-1
 
 fig, ax = plt.subplots(subplot_kw={"projection": "3d"}, figsize=(16, 9))
 ax.set_title('Original Population')
 
 # Make data.
-X = np.arange(-5, 5, 0.2)
-Y = np.arange(-5, 5, 0.2)
+X = np.arange(-5.12, 5.12, 0.2)
+Y = np.arange(-5.12, 5.12, 0.2)
 X, Y = np.meshgrid(X, Y)
 Z = 20 + (X**2) + (Y**2) - 10*(np.cos((2*np.pi*X)) + np.cos((2*np.pi*Y)))
 
@@ -70,7 +70,7 @@ def addFittest( pa ):
 def newMP( pa ):
     mp = addFittest(pa)
     for i in mp:
-        i.mutate()
+        i.aMutate()
     return mp
 
 def newPop( popArray):
@@ -92,8 +92,8 @@ popArray = []
 
 #initialise & show population
 for i in range(POPSIZE):
-    x1 = random.uniform(-4.0, 4.0)
-    x2 = random.uniform(-4.0, 4.0)
+    x1 = random.uniform(-5.12, 5.12)
+    x2 = random.uniform(-5.12, 5.12)
     data = Ras(x1, x2)
     popArray.append(data)
 
