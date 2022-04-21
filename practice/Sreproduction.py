@@ -125,17 +125,7 @@ def newPop( popArray):
 
     calcFitness(newPop)
 
-    #To Do:
-    #create function to use takeOne
-    #select two parents, make child, fill list of new Pop
-    #Prob = 1 - prob
     
-    """ #total = 0
-    for i in newPop:
-        print(i.x1, i.x2, i.fitness,   )
-        #total += i.get_prob()
-
-    #print("Sum of prob = ", total) """
     return newPop
 
 

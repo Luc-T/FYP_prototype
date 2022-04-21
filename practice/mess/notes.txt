@@ -5,13 +5,21 @@ installed SciPi https://scipy.org/install/
 Used this https://likegeeks.com/3d-plotting-in-python/
 to find out how to display 3d graph in python
 
-TODO
+__update 21/04__
+Done last update. Only Areproduction shows multiple graphs. Add to others? Or try alternative way to show graphs.
 
-atm code makes graph with first pop shown. Finds 5 elites, generates 5 brand new members.
-Problem- cant update display by replotting scatters. 
-Plan- instead focus on GA rather than interface, actually mutate elites instead of making new members
-Make it modular, so it can loop multiple times, come back to matplotlib?
+Other sub-projects:
+Begin on another GA artifact
+Look into practical applications for minimising functions
 
+
+
+__update 02/04__
+creates pop of 10, sorts by fitness, keeps fittest 5, copies them, modifies copy. No sophistication, such as fittest having multiple copies, randomness that fit candidate isnt chosen etc. 
+Mutation could be further changed. It's just change, x1, or x2, or both. Or chance of replacing with brand new candidate. Have more option? Chance of small step or large step? atm its just 50/50 + or - of rnd(0.0-1.0)
+
+Need alternate version. Reproduce via two parents. See crossover thoughts.
+Need to implement matplotlib, update graph with different scatters from new populations/Button to click next pop. <- less important than the GA itself
 
 ___archive___
 sort pop by fitness -done?
@@ -25,12 +33,10 @@ create crossover function
     decide on elites, top half with some exceptions, random chance for a higher fitness to not survive/ low to survive. 
     Replace chosen half with copies of 'fitter' half. Mutate copies.
     Chance for copy to be completely new ??? <- this could go in mutate function idk
-	
-	
-	
-__update 02/04__
-creates pop of 10, sorts by fitness, keeps fittest 5, copies them, modifies copy. No sophistication, such as fittest having multiple copies, randomness that fit candidate isnt chosen etc. 
-Mutation could be further changed. It's just change, x1, or x2, or both. Or chance of replacing with brand new candidate. Have more option? Chance of small step or large step? atm its just 50/50 + or - of rnd(0.0-1.0)
 
-Need alternate version. Reproduce via two parents. See crossover thoughts.
-Need to implement matplotlib, update graph with different scatters from new populations/Button to click next pop. <- less important than the GA itself
+TODO
+
+atm code makes graph with first pop shown. Finds 5 elites, generates 5 brand new members.
+Problem- cant update display by replotting scatters. 
+Plan- instead focus on GA rather than interface, actually mutate elites instead of making new members
+Make it modular, so it can loop multiple times, come back to matplotlib?
