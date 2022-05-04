@@ -7,9 +7,9 @@ from operator import attrgetter
 import numpy as np
 from rastrigins2 import Ras
 
-##########
+###########
 # for aesexual reproduction
-##########
+###########
 
 POPSIZE = 50
 HALFPOP = (POPSIZE//2)-1
