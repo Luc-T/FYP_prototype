@@ -75,14 +75,14 @@ class Ras:
     def mutate(self):
         
         num = random.random()
-        if (num > 0.9) & (num < 0.93):
+        if (num > 0.82) & (num < 0.87):
             self.modifyX1()
-        elif (num > 0.93) & (num < 0.96):
+        elif (num > 0.87) & (num < 0.92):
             self.modifyX2()
-        elif (num > 0.96) & (num < 0.99):
+        elif (num > 0.92) & (num < 0.97):
             self.modifyX1()
             self.modifyX2()
-        elif num > 0.99:
+        elif num > 0.97:
             self.newValues()
         
         return
