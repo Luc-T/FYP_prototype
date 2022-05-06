@@ -157,9 +157,32 @@ for i in popArray:
 
 
 for i in range (10):
+    title = 'Population: '
+    title = (title + str(i))
     print("Offspring population version: ", (i+1))
     popArray = newPop(popArray)
     popArray = orderPop(popArray)
     for i in popArray:
         print(i.x1, i.x2, i.fitness,   )
+    
+    
+    fig, ax = plt.subplots(subplot_kw={"projection": "3d"}, figsize=(16, 9))
+    ax.set_title(title)
+    for i in popArray:
+        ax.scatter(i.x1, i.x2, i.fitness, color='red', alpha=1)
+    
+    # Plot the surface.
+    surf = ax.plot_surface(X, Y, Z, alpha=.2, cmap=cm.winter,
+                       linewidth=0, antialiased=False)
+
+    # Customize the z axis.
+    ax.set_zlim(-100, 100)
+    ax.zaxis.set_major_locator(LinearLocator(10))
+    # A StrMethodFormatter is used automatically
+    ax.zaxis.set_major_formatter('{x:.02f}')
+
+    # Add a color bar which maps values to colours.
+    fig.colorbar(surf, shrink=0.5, aspect=5)
+
+    plt.show()
     
