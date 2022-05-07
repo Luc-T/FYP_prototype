@@ -99,14 +99,6 @@ def newPop( popArray):
     for i in popArray:
         i.set_prob((i.get_prob() / Probsum))
     
-    #swap probs around (I think wrong!)
-    """ j = 0
-    for i in range((POPSIZE-1), HALFPOP, -1):
-        temp = popArray[i].get_prob()
-        popArray[i].set_prob(popArray[j].get_prob())
-        popArray[j].set_prob(temp)
-        j+=1 """
-    
     #create a new pop
     newPop = []
     #newPop.append(addFittest(popArray))
