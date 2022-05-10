@@ -11,26 +11,28 @@ class Ras:
         self.x2 = x2
         self.fitness = 1000
 
+#getters and setters used 
     def get_x1(self):
         return self.x1
 
     def set_x1(self, value):
-        #print("setter method called")
+        
         self.x1 = value
 
     def get_x2(self):
         return self.x2
 
     def set_x2(self, value):
-        #print("setter method called")
+        
         self.x2 = value
     
     def get_fitness(self):
         return self.fitness
 
     def set_fitness(self, y):
-        #print("set new fitness")
+        
         self.fitness = y
+    
     
     def calc(self):
         y = 20 + (self.x1**2) + (self.x2**2) - 10*(np.cos((2*np.pi*self.x1)) + np.cos((2*np.pi*self.x2)))
@@ -39,6 +41,8 @@ class Ras:
     def set_prob(self, p):
         
         self.prob = p
+
+    #functionality
 
     def get_prob(self):
         return self.prob
@@ -55,7 +59,7 @@ class Ras:
             #negative
             return (-s)
 
-    #change genotype
+    #change dna
     def modifyX1(self):
         mod = self.getStep()
         newx1 = self.get_x1() + mod
@@ -66,12 +70,14 @@ class Ras:
         newx2 = self.get_x2() + mod
         self.set_x2(newx2)
     
+    #get completely new dna
     def newValues(self):
         newx1 = random.uniform(-4.0, 4.0)
         newx2 = random.uniform(-4.0, 4.0)
         self.set_x1(newx1)
         self.set_x2(newx2)
         
+    #mutation for sexual reproduction    
     def mutate(self):
         
         num = random.random()
@@ -87,6 +93,7 @@ class Ras:
         
         return
 
+    #mutation for asexual reproduction
     def aMutate(self):
         num = random.random()
         if num < 0.45:

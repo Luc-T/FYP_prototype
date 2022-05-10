@@ -64,7 +64,6 @@ def addFittest( pa ):
         x2 = pa[i].get_x2()
         newMember = Ras(x1, x2)
         newPA.append(newMember)
-        #newPA.append(pa[i])
     return newPA
 
 def newMP( pa ):

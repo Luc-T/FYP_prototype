@@ -39,28 +39,10 @@ def calcFitness( popArray ):
     for i in range(POPSIZE):
         popArray[i].calc()
 
-#find the total fitness of entire pop
-#MBY dont need this???
-def getTotalFitness( popArray ):
-    sum = 0
-    for i in range(POPSIZE):
-        sum += popArray[i].fitness
-        return sum
 
 def orderPop( popArray ):
     s = sorted(popArray, key=attrgetter('fitness'))
     return s
-
-def removeScatters( popArray ):
-    for i in popArray:
-        ax.scatter(i.x1, i.x2, i.fitness, color='red', alpha=1).remove()
-
-def addFittest( pa ):
-    #pa = list of pop in order of fitness
-    x1 = pa[0].get_x1()
-    x2 = pa[0].get_x2()
-    fittestMember = Ras(x1, x2)
-    return fittestMember
 
 def reproduce(p1, p2):
     b = bool(random.getrandbits(1))
@@ -102,7 +84,7 @@ def newPop( popArray):
      
     #create a new pop
     newPop = []
-    #newPop.append(addFittest(popArray))
+    
     for i in range(POPSIZE):
         parent1 = pickOne(popArray)
         #loop until parent2 has different x1 & x2 to parent1
@@ -119,17 +101,6 @@ def newPop( popArray):
 
     calcFitness(newPop)
 
-    #To Do:
-    #create function to use takeOne
-    #select two parents, make child, fill list of new Pop
-    #Prob = 1 - prob
-    
-    """ #total = 0
-    for i in newPop:
-        print(i.x1, i.x2, i.fitness,   )
-        #total += i.get_prob()
-
-    #print("Sum of prob = ", total) """
     return newPop
 
 
@@ -165,7 +136,7 @@ for i in range (10):
     for i in popArray:
         print(i.x1, i.x2, i.fitness,   )
     
-    
+    #show new genneration on graph
     fig, ax = plt.subplots(subplot_kw={"projection": "3d"}, figsize=(16, 9))
     ax.set_title(title)
     for i in popArray:
